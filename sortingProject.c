@@ -157,7 +157,7 @@ void mergeSort(int arr[], int l, int r)
     }
 } 
 
-#define MAX_SIZE 20000
+#define MAX_SIZE 160000
 
 int main() {
     // int arr[] = {64, 34, 25, 12, 22, 11, 90};
@@ -168,51 +168,61 @@ int main() {
     }
 
 
-    int cArr1[MAX_SIZE], cArr2[MAX_SIZE], cArr3[MAX_SIZE], cArr4[MAX_SIZE], cArr5[MAX_SIZE];
-    int n = sizeof(arr)/sizeof(arr[0]);
+    int cArr[MAX_SIZE];
+    int n = MAX_SIZE;
 
     // Creating a copy of initial arr to have consistent data
-    for(int i = 0; i < n; i++){
-        cArr1[i] = arr[i];
-        cArr2[i] = arr[i];
-        cArr3[i] = arr[i];
-        cArr4[i] = arr[i];
-        cArr5[i] = arr[i];
-    }
+    
+    printf("Array size: %d\n\n", MAX_SIZE);
 
     clock_t start, end;
     double time_used;
 
+    for(int i = 0; i < n; i++){
+            cArr[i] = arr[i];
+    }
     start = clock();
-        bubbleSort(cArr1, n);
+        bubbleSort(cArr, n);
     end = clock();
     time_used = ((double)end - (double)start) / CLOCKS_PER_SEC;
     printf("Sorted array BubbleSort: \n Time used %f s\n\n\n", time_used); 
     // printArray(cArr1, n); 
     
+    for(int i = 0; i < n; i++){
+            cArr[i] = arr[i];
+    }
     start = clock();
-    insertionSort(cArr2, n);
+    insertionSort(cArr, n);
     end = clock();
     time_used = ((double)end - (double)start) / CLOCKS_PER_SEC;
     printf("Sorted array InsertionSort: \n Time used %f s\n\n\n", time_used); 
     // printArray(cArr2, n); 
 
+    for(int i = 0; i < n; i++){
+            cArr[i] = arr[i];
+    }
     start = clock();
-    selectionSort(cArr3, n);
+    selectionSort(cArr, n);
     end = clock();
     time_used = ((double)end - (double)start) / CLOCKS_PER_SEC;
     printf("Sorted array SelectionSort: \n Time used %f s\n\n\n", time_used); 
     // printArray(cArr3, n);
 
+    for(int i = 0; i < n; i++){
+            cArr[i] = arr[i];
+    }
     start = clock();
-    quickSort(cArr4, 0, n - 1);
+    quickSort(cArr, 0, n - 1);
     end = clock();
     time_used = ((double)end - (double)start) / CLOCKS_PER_SEC;
     printf("Sorted array QuickSort: \n Time used %f s\n\n\n", time_used); 
     // printArray(cArr4, n); 
 
+    for(int i = 0; i < n; i++){
+            cArr[i] = arr[i];
+    }
     start = clock();
-    mergeSort(cArr4, 0, n - 1);
+    mergeSort(cArr, 0, n - 1);
     end = clock();
     time_used = ((double)end - (double)start) / CLOCKS_PER_SEC;
     printf("Sorted array MergeSort: \n Time used %f s\n\n\n", time_used); 
