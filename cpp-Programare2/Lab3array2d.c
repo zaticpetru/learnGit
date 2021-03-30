@@ -1,30 +1,50 @@
+#include <string.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-
-int main(){
-    int n = 2, m = 4;
-    int a[100][100] = {
-        {10, 11, 11, 13},
-        {14, 15, 16, 17}
-    };
-    char isEaven;
-    int rs = 0;
-
-    for (int j = 0; j < m; j++)
-    {
-        isEaven = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if(a[i][j] % 2 == 0) {
-                isEaven = 1;
-            }
-        }
-        rs += isEaven;
+int findStr(char *big, char *small) {
+    int n = strlen(big);
+    int m = strlen(small);
+    int find = 0;
+    
+    if(n < m) {
+        return 0;
     }
     
+    for(int i = 0; i < n - m; i++){
+        find = 1;
+        for(int j = 0; j < m; j++){
+            if(big[i+j] != small[j]){
+                find = 0;
+            }
+        }
+        if(find == 1){
+            return find;
+        }
+    }
+    
+    return find;
+}
 
-    printf("\n%d\n", rs);
-
+int main() {
+    int n;
+    int i = 0;
+    scanf("%d", &n);
+    
+    char inpt[100][100];
+    char *str;
+    
+    while(i < n) {
+        scanf("%s", inpt[i]);
+        i++;
+    }
+    
+    scanf("%s", str);
+    
+    for(i = 0; i < n; i++) {
+        printf("%s\n", inpt[i]);
+        printf("%d\n", findStr(inpt[i], str));
+    }
+    
     return 0;
 }
+
