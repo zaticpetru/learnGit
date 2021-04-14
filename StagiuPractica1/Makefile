@@ -3,7 +3,8 @@ FLAGS = -Wall -Werror -Wextra
 PATH_SRC = ./src
 
 SRC = main.c \
-		$(wildcard $(PATH_SRC)/menues/*.c)
+		$(wildcard $(PATH_SRC)/menues/*.c) \
+		$(wildcard $(PATH_SRC)/data/*.c)
 
 NAME = main
 

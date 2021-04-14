@@ -6,7 +6,7 @@ void print_info_menu(){
     printf("Utilizatorul poate construi o noua raportare.\n");
     printf("Acesta introduce zona in care incidentul are loc si tipul incidentului\n");
     printf("Utilizatorul poate vizualiza o lista cu toate incidentele raportate.\n");
-    printf("De asemenea, aplicația oferă posibilitatea filtrarii raportarilor in funcție de zona\n");
+    printf("De asemenea, aplicatia ofera posibilitatea filtrarii raportarilor in functie de zona\n");
     printf("sau in functie de tipul incidentului.");
     printf("Un exemplu de element: Strada Vasile Alecsandri - Lampa stradala nefunctionala.\n");
 

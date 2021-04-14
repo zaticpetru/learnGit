@@ -1,3 +1,6 @@
+#ifndef MENUES_HEADER
+#define MENUES_HEADER
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,3 +23,5 @@ void handle_info_menu(char choice);
 
 void (*current_menu)();
 void (*current_handler)(char choice);
+
+#endif

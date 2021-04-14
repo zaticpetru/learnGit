@@ -1,9 +1,13 @@
 #include "menues.h"
+#include "../data/db_raport.h"
 
 void print_incidente_menu(){
     printf("Afisare incidente:\n\n");
-    printf("Aici vor fi afisate incidentele\n\n");
-    printf("[1] Mergi la meniu principal\n");
+
+    ReadRaports();
+    PrintRaports();
+
+    printf("\n\n[1] Mergi la meniu principal\n");
 }
 
 void handle_incidente_menu(char choice) {

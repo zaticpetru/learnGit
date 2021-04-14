@@ -1,11 +1,15 @@
 #include "./src/menues/menues.h"
+#include "./src/data/db_raport.h"
 
 int main()
 {
     current_menu = print_main_menu;
     current_handler = handle_main_menu;
+
     clear_screen();
     char choice;
+
+    ReadRaports();
 
     do
     {
