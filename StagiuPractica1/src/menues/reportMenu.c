@@ -7,7 +7,9 @@ void print_raport_menu()
     printf("Meniu de raportare\n");
     printf("[1] Introdu datele pentru un nou caz\n");
     printf("[2] Sterge caz raportat (id) \n");
-    printf("[3] Mergi la meniu principal\n");
+    printf("[3] Afiseaza incidente raportate \n");
+
+    printf("[4] Mergi la meniu principal\n");
 }
 
 void handle_raport_menu(char choice)
@@ -51,6 +53,12 @@ void handle_raport_menu(char choice)
         break;
 
     case '3':
+        printf("Afisare incidente:\n");
+        PrintRaports(2);
+        printf("\n");
+        break;
+
+    case '4':
         printf("Mergi la meniu principal\n\n");
         current_menu = print_main_menu;
         current_handler = handle_main_menu;

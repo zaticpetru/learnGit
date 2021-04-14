@@ -5,7 +5,7 @@ void print_incidente_menu(){
     printf("Afisare incidente:\n\n");
 
     ReadRaports();
-    PrintRaports();
+    PrintRaports(1);
 
     printf("\n\n[1] Mergi la meniu principal\n");
 }

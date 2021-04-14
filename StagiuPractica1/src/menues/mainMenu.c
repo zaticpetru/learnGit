@@ -13,7 +13,7 @@ void handle_main_menu(char choice)
     switch (choice)
     {
     case '1':
-        printf("Raporta incident\n\n");
+        printf("Raporteaza/sterge incident\n\n");
         current_menu = print_raport_menu;
         current_handler = handle_raport_menu;
         break;

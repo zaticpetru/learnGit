@@ -24,7 +24,7 @@ char* RaportToStrBeautified(raport r);
 int ReadRaports();
 int SaveRaports();
 
-void PrintRaports();
+void PrintRaports(int format);
 
 // RETURNS - 0 if add/delete was successful
 // RETURNS - -1 if error

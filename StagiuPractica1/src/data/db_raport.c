@@ -92,10 +92,17 @@ int ReadRaports() { // TESTED - WORKING
     return 0;
 }
 
-void PrintRaports(){
-    for(int i = 0; i < N; i++){
+void PrintRaports(int format){
+    
+    if(format == 1) {
+        for(int i = 0; i < N; i++){
             printf("%s", RaportToStrBeautified(Data[i]));
         }
+    } else if(format == 2) {
+        for(int i = 0; i < N; i++){
+            printf("%s", RaportToStr(Data[i]));
+        } 
+    }
 }
 
 int SaveRaports() {
@@ -148,9 +155,9 @@ raport CrateRaport(char* title, char* location, char* description) {
 
 //     ReadRaports();
 //     AddRaport(CrateRaport(4,"new title", "new location", "new description"));
-//     PrintRaports();
+//     PrintRaports(1);
 //     DeleteRaport(4);
 //     printf("\n\n");
-//     PrintRaports();
+//     PrintRaports(2);
 //     return 0;
 // }
