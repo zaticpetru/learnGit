@@ -1,5 +1,7 @@
 #include "util.h"
 
+// https://stackoverflow.com/questions/1694036/why-is-the-gets-function-so-dangerous-that-it-should-not-be-used
+
 int getLine(char *prmpt, char *buff, int sz) {
     int ch, extra;
 
