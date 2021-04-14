@@ -16,6 +16,8 @@ typedef struct raport
 raport StrToRaport(char *str);
 char* RaportToStr(raport r);
 char* RaportToStrNoSpaces(raport r);
+char* RaportToStrBeautified(raport r);
+
 
 // RETURNS - 0 if read/save was successful
 // RETURNS - -1 if error
@@ -28,5 +30,6 @@ void PrintRaports();
 // RETURNS - -1 if error
 int AddRaport(raport newRaport);
 int DeleteRaport(int id);
+raport CrateRaport(char* title, char* location, char* description);
 
 #endif

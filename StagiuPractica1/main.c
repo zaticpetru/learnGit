@@ -1,5 +1,6 @@
 #include "./src/menues/menues.h"
 #include "./src/data/db_raport.h"
+#include "./src/util/util.h"
 
 int main()
 {

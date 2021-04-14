@@ -4,6 +4,7 @@ raport Data[100];
 int N = 0;
 char *INCIDENT_FILE_NAME = "incidente.csv";
 int ID_TO_DELETE = -1;
+int NEXT_ID = 0;
 
 raport StrToRaport(char *str) { // TESTED - WORKING
     raport result;
@@ -48,6 +49,16 @@ char* RaportToStrNoSpaces(raport r){ // TESTED - WORKING
     return buffer;
 }
 
+char* RaportToStrBeautified(raport r){ // TESTED - WORKING
+    char *buffer;
+    buffer = (char*)malloc((310)*sizeof(char));
+
+    snprintf(buffer, 310,
+        "ID:(%d) -> %s -- %s\n \t %s\n___________________________________________\n\n",
+        r.ID, r.Title, r.Location, r.Description);
+    return buffer;
+}
+
 // RETURNS - 0 if read was successful
 // RETURNS - -1 if error
 int ReadRaports() { // TESTED - WORKING
@@ -68,6 +79,9 @@ int ReadRaports() { // TESTED - WORKING
         // read - length of retrived string
 
         Data[N] = StrToRaport(line);
+        if(Data[N].ID >= NEXT_ID){
+            NEXT_ID = Data[N].ID + 1;
+        }
         N++;
     }
     fclose(fpt);
@@ -80,7 +94,7 @@ int ReadRaports() { // TESTED - WORKING
 
 void PrintRaports(){
     for(int i = 0; i < N; i++){
-            printf("%s", RaportToStr(Data[i]));
+            printf("%s", RaportToStrBeautified(Data[i]));
         }
 }
 
@@ -102,6 +116,9 @@ int SaveRaports() {
 int AddRaport(raport newRaport) {
     Data[N] = newRaport;
     N++;
+    if(newRaport.ID >= NEXT_ID){
+        NEXT_ID = newRaport.ID + 1;
+    }
     return SaveRaports();
 }
 
@@ -116,9 +133,10 @@ int DeleteRaport(int id) {
     return result;
 }
 
-raport CrateRaport(int id, char* title, char* location, char* description) {
+raport CrateRaport(char* title, char* location, char* description) {
     raport newRaport;
-    newRaport.ID = id;
+    newRaport.ID = NEXT_ID;
+    NEXT_ID++;
     strcpy(newRaport.Title, title);
     strcpy(newRaport.Location, location);
     strcpy(newRaport.Description, description);
