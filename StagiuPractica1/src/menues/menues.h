@@ -17,6 +17,9 @@ void handle_raport_menu(char choice);
 
 void print_incidente_menu();
 void handle_incidente_menu(char choice);
+// in incidente menu we hande filters
+void handle_filter();
+
 
 void print_info_menu();
 void handle_info_menu(char choice);

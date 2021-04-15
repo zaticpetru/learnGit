@@ -93,15 +93,8 @@ int ReadRaports() { // TESTED - WORKING
 }
 
 void PrintRaports(int format){
-    
-    if(format == 1) {
-        for(int i = 0; i < N; i++){
-            printf("%s", RaportToStrBeautified(Data[i]));
-        }
-    } else if(format == 2) {
-        for(int i = 0; i < N; i++){
-            printf("%s", RaportToStr(Data[i]));
-        } 
+    for(int i = 0; i < N; i++){
+        printf("%s", RaportToStrFormatted(Data[i], format));
     }
 }
 
@@ -150,9 +143,46 @@ raport CrateRaport(char* title, char* location, char* description) {
     return newRaport;
 }
 
-// int main() {
+void FilterProductsByTitle(char* filter, int format) {
+    char test = 0;
     
+    for(int i = 0; i < N; i++){
+        if(strstr(Data[i].Title, filter) != NULL){
+            printf("%s", RaportToStrFormatted(Data[i], format));
+            test = 1;
+        }
+    }
 
+    if(test == 0) {
+        printf("Nu au fost gasite incidente care contin in Titlu: %s\n\n", filter);
+    }
+}
+
+void FilterProductsByLocation(char* filter, int format) {
+    char test = 0;
+    
+    for(int i = 0; i < N; i++){
+        if(strstr(Data[i].Location, filter) != NULL){
+            printf("%s", RaportToStrFormatted(Data[i], format));
+            test = 1;
+        }
+    }
+
+    if(test == 0) {
+        printf("Nu au fost gasite incidente care s-au produs in locatia: %s\n\n", filter);
+    }
+}
+
+char* RaportToStrFormatted(raport r, int format){
+    if(format == 1)
+        return RaportToStrBeautified(r);
+    if(format == 2)
+        return RaportToStr(r);
+    if(format == 0)
+        return RaportToStrNoSpaces(r);
+}
+
+// int main() {
 //     ReadRaports();
 //     AddRaport(CrateRaport(4,"new title", "new location", "new description"));
 //     PrintRaports(1);

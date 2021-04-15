@@ -3,7 +3,7 @@
 
 void print_main_menu()
 {
-    printf("[1] Raporta incident\n");
+    printf("[1] Raporteaza/sterge incident\n");
     printf("[2] Incidente raportate\n");
     printf("[3] Informatie despre sistem\n");
 }

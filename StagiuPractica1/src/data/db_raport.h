@@ -17,7 +17,7 @@ raport StrToRaport(char *str);
 char* RaportToStr(raport r);
 char* RaportToStrNoSpaces(raport r);
 char* RaportToStrBeautified(raport r);
-
+char* RaportToStrFormatted(raport r, int format);
 
 // RETURNS - 0 if read/save was successful
 // RETURNS - -1 if error
@@ -31,5 +31,9 @@ void PrintRaports(int format);
 int AddRaport(raport newRaport);
 int DeleteRaport(int id);
 raport CrateRaport(char* title, char* location, char* description);
+
+void FilterProductsByLocation(char* filter, int format);
+void FilterProductsByTitle(char* filter, int format);
+
 
 #endif
