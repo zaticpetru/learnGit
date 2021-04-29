@@ -2,14 +2,18 @@
 #include "../data/db_raport.h"
 #include "../util/util.h"
 
+int DISPLAY_FORMAT = 1;
+
+
 void print_raport_menu()
 {
     printf("Meniu de raportare\n");
     printf("[1] Introdu datele pentru un nou caz\n");
     printf("[2] Sterge caz raportat (id) \n");
     printf("[3] Afiseaza incidente raportate \n");
+    printf("[4] Schimba afisarea (lung / scurt)\n");
 
-    printf("[4] Mergi la meniu principal\n");
+    printf("[5] Mergi la meniu principal\n");
 }
 
 void handle_raport_menu(char choice)
@@ -42,23 +46,39 @@ void handle_raport_menu(char choice)
 
         printf("Sterge caz raportat (id)\n\n");
         char id[10];
-        getLine("ID TO DELETE: ", id, sizeof(id));
+        PrintRaports(DISPLAY_FORMAT);
+        getLine("ID TO DELETE: (-1 for abort)", id, sizeof(id));
 
         if(DeleteRaport(atoi(id)) == -1) {
             printf("Error in deleting raport");
         } else {
-            printf("\nRaport sters cu succes id = %s\n", id);
+            if(atoi(id) == -1){
+                printf("\nAbort delete\n");
+            } else {
+                printf("\nRaport sters cu succes id = %s\n", id);
+            }
         }
 
         break;
 
     case '3':
         printf("Afisare incidente:\n");
-        PrintRaports(2);
+        PrintRaports(DISPLAY_FORMAT);
         printf("\n");
         break;
 
     case '4':
+        printf("Schimba afisarea (lung / scurt)\n");
+            if(DISPLAY_FORMAT == 1) {
+                printf("lung -> scurt\n\n");
+                DISPLAY_FORMAT = 2;
+            } else {
+                printf("scurt -> lung\n\n");
+                DISPLAY_FORMAT = 1;
+            }
+        break;
+
+    case '5':
         printf("Mergi la meniu principal\n\n");
         current_menu = print_main_menu;
         current_handler = handle_main_menu;

@@ -51,7 +51,7 @@ istream &operator>>(istream &in, Persoana &persoana) {
 char * Persoana::scrieReview(const Carte &c, int numarZile) {
     stringstream ss;
     
-    ss << "Reviewul pentru cartrea" << c.titlu <<  "trebuie terminat in " << numarZile << "zile\n";
+    ss << "Reviewul pentru cartrea" << c.titlu <<  "trebuie terminat in doua saptamani\n";
     
     string s = ss.str();
     int n = s.length() + 1;

@@ -22,7 +22,7 @@
         friend istream & operator>>(istream &, Persoana&);
         friend ostream & operator<<(ostream &, const Persoana&);
 
-        char *scrieReview(const Carte &c, int numarZile);
+        char *scrieReview(const Carte &, int);
     };
 
 #endif
