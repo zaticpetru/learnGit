@@ -10,11 +10,19 @@
 using namespace std;
 
     class Playlist{
-        public:
             string name;
             float rating;
 
             list<Song> songs;
+        public:
+            void set_name(string name);
+            string get_name() const;
+
+            void set_rating(float rating);
+            float get_rating() const;
+
+            void set_songs(list<Song> songs);
+            list<Song> get_songs() const;
 
             bool AddSong(Song &);
 
@@ -28,6 +36,6 @@ using namespace std;
 
             friend istream &operator>>(istream &, Playlist &);
 
-            friend ostream &operator<<(ostream &, Playlist &);
+            friend ostream &operator<<(ostream &, const Playlist &);
     };
 #endif  

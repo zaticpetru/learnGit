@@ -1,30 +1,36 @@
 #include "./src/data/Song.h"
 #include "./src/data/Playlist.h"
+#include "./src/menues/menues.h"
 
 #include <iostream>
 
 using namespace std;
 
+void (*current_menu)();
+void (*current_handler)(char);
+
 int main()
 {  
-    Song s1;
-    Song s2;
-    Song s3;
+    current_menu = print_main_menu;
+    current_handler = handle_main_menu;
 
-    cin >> s1;
-    cin >> s2;
-    cin >> s3;
+    clear_screen();
+    char choice;
 
-    Playlist playlist;
+    // ReadRaports();
 
-    cin >> playlist;
+    do
+    {
+        print_default(current_menu);
+        choice = getUserChoice();
+        clear_screen();
 
-    playlist.AddSong(s1);
-    playlist.AddSong(s2);
-    playlist.AddSong(s3);
+        if (choice != 'x')
+        {
+            handle_default(current_handler, choice);
+        }
 
-
-    cout << "Playlist creat:\n" << playlist;
+    } while (choice != 'x');
 
     return 0;
 }

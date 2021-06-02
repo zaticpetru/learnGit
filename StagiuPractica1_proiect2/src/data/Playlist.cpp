@@ -4,6 +4,27 @@
 
 using namespace std;
 
+void Playlist::set_name(string name){
+    this->name = name;
+}
+string Playlist::get_name() const{
+    return this->name;
+}
+
+void Playlist::set_rating(float rating){
+    this->rating = rating;
+}
+float Playlist::get_rating() const{
+    return this->rating;
+}
+
+void Playlist::set_songs(list<Song> songs) {
+    this->songs = songs;
+}
+list<Song> Playlist::get_songs() const{
+    return this->songs;
+}
+
 Playlist::Playlist(string name, float rating)
 {
     if (name.empty())
@@ -60,25 +81,21 @@ istream &operator>>(istream &in, Playlist &playlist)
     return in;
 }
 
-ostream &operator<<(ostream &out, Playlist &playlist)
+ostream &operator<<(ostream &out, const Playlist &playlist)
 {
     out << "Name: " << playlist.name << "\n"
         << "Rating: " << playlist.rating << "\n";
+
     int counter = 1;
-    // for (list<Song>::iterator it = playlist.songs.begin(); it != playlist.songs.end(); ++it){
-    //     out << counter << ") " << it->name << "\n";
-    // }
 
     out << "Number of songs in playlist " << playlist.songs.size() << "\n";
 
-    Song output;
-    for(list<Song>::iterator it = playlist.songs.begin(); it != playlist.songs.end(); it++){
-        int secDuration = it->secDuration;
+    for(const auto &it : playlist.songs) {
+        int secDuration = it.get_secDuration();
 
-        out << counter << ") " << secDuration  << " name: " << it->name << "\n";
+        out << counter << ") " << secDuration  << " name: " << it.get_name() << " genre: " << it.get_genre() << "\n";
         counter++;
     }
-
 
     return out;
 }
