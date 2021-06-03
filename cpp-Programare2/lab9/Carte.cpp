@@ -78,6 +78,7 @@ istream &operator>>(istream &in, Carte &c)
     in >> c.titlu;
     in.ignore();
     in >> c.autor;
+    in.ignore();
     return in;
 }
 
