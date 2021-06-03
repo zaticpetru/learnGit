@@ -93,7 +93,7 @@ ostream &operator<<(ostream &out, const Playlist &playlist)
     for(const auto &it : playlist.songs) {
         int secDuration = it.get_secDuration();
 
-        out << counter << ") " << secDuration  << " name: " << it.get_name() << " genre: " << it.get_genre() << "\n";
+        out << counter << ") " << secDuration/60 << ":" << secDuration%60 << " name: " << it.get_name() << " genre: " << it.get_genre() << "\n";
         counter++;
     }
 

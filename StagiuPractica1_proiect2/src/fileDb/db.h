@@ -10,6 +10,10 @@
 list<Playlist> readPlaylists();
 list<Song> readPlaylistSongs(string playlistName);
 
+void savePlaylists(list<Playlist> playlists);
+void savePlaylistSongs(string playlistName, list<Song> songs);
+
+
 extern list<Playlist> gPlaylists;
 extern int gN;
 

@@ -1,6 +1,6 @@
 #include "db.h"
 
-string playlistsFileName = "playlist.csv";
+string playlistsFileName = "playlist.txt";
 int N = 0;
 
 
@@ -67,4 +67,53 @@ list<Song> readPlaylistSongs(string playlistName) {
     }
 
     return songs;
+}
+
+
+void savePlaylists(list<Playlist> playlists) {
+    if(playlists.size() > 0) {
+        string fileName = "db/" + playlistsFileName;
+        ofstream playlistOut(fileName);
+
+        playlistOut << playlists.size() << "\n";
+
+        for(auto &it : playlists) {
+            string filename = it.get_name();
+            list<Song> songs = it.get_songs();
+
+            for(auto &it : songs) {
+                cout << it.get_name() << "\n"
+                << it.get_genre() << "\n"
+                << it.get_secDuration() << "\n";
+            }
+
+            savePlaylistSongs(filename, songs);
+
+            playlistOut << it.get_name() << "\n" << it.get_rating() << "\n";
+        }
+
+        playlistOut.close();
+    }  
+}
+
+void savePlaylistSongs(string playlistName, const list<Song> songs){
+    cout << "\nENTERED SAVING SONGS\n";
+    cout << "\n SONGS SIZE" << songs.size() << "\n";
+    cout << "\n PlaylistName" << playlistName << "\n";
+    
+    if(songs.size() > 0) {
+        string fileName = "db/" + playlistName + ".txt";
+        ofstream songOut;
+        songOut.open(fileName, ios::out);
+
+        songOut << songs.size() << "\n";
+        for(auto &it : songs) {
+            songOut << it.get_name() << "\n"
+                << it.get_genre() << "\n"
+                << it.get_secDuration() << "\n";
+        }
+
+        songOut.close();
+    }
+
 }

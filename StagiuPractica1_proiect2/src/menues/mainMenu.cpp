@@ -55,8 +55,14 @@ void handle_main_menu(char choice)
 
             newPlaylist->AddSong(*newSong);
         }
-        // cout << "_____NEW______________PLAYLIST____________________\n";
-        // cout << *newPlaylist;
+        
+
+        gPlaylists.push_front(*newPlaylist);
+
+        savePlaylists(gPlaylists);
+        savePlaylistSongs(newPlaylist->get_name(), newPlaylist->get_songs());
+        gPlaylists = readPlaylists();
+
         break;
     }
 

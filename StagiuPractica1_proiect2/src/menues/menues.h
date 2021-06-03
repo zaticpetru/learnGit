@@ -6,6 +6,7 @@
 #include <list>
 #include "../data/Playlist.h"
 #include "../data/Song.h"
+#include "../fileDb/db.h"
 
 using namespace::std;
 
