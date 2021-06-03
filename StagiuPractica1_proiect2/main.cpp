@@ -9,6 +9,9 @@ using namespace std;
 void (*current_menu)();
 void (*current_handler)(char);
 
+// list<Playlist> gPlaylists;
+// int gN;
+
 int main()
 {  
     current_menu = print_main_menu;
@@ -17,7 +20,7 @@ int main()
     clear_screen();
     char choice;
 
-    // ReadRaports();
+    // gPlaylists = readPlaylists();
 
     do
     {

@@ -3,11 +3,16 @@
 
 #include <stdlib.h>
 #include <iostream>
+// #include <list>
+// #include "../data/Playlist.h"
 
 using namespace::std;
 
 extern void (*current_menu)();
 extern void (*current_handler)(char);
+
+// extern list<Playlist> gPlaylists;
+// extern int gN;
 
 void clear_screen();
 char getUserChoice();
@@ -20,5 +25,8 @@ void handle_main_menu(char choice);
 
 void print_playlist_menu();
 void handle_playlist_menu(char choice);
+
+void print_manage_playlist_menu();
+void handle_manage_playlist_menu(char choice);
 
 #endif

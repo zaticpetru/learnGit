@@ -5,7 +5,11 @@
 
 void print_playlist_menu()
 {
-    readPlaylists();
+    list<Playlist> playlists = readPlaylists();
+
+    for(auto &it : playlists) {
+        cout << it << "\n";
+    }
 
     cout << "[1] Alege playlist:\n";
     cout << "[2] Mergi la meniu principal\n";
