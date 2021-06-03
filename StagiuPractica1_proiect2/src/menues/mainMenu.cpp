@@ -1,6 +1,4 @@
 #include "menues.h"
-#include "../data/Playlist.h"
-#include "../data/Song.h"
 
 void print_main_menu()
 {

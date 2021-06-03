@@ -5,9 +5,7 @@
 
 void print_playlist_menu()
 {
-    list<Playlist> playlists = readPlaylists();
-
-    for(auto &it : playlists) {
+    for(auto &it : gPlaylists) {
         cout << it << "\n";
     }
 

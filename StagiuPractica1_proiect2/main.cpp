@@ -1,6 +1,7 @@
 #include "./src/data/Song.h"
 #include "./src/data/Playlist.h"
 #include "./src/menues/menues.h"
+#include "./src/fileDb/db.h"
 
 #include <iostream>
 
@@ -9,8 +10,8 @@ using namespace std;
 void (*current_menu)();
 void (*current_handler)(char);
 
-// list<Playlist> gPlaylists;
-// int gN;
+list<Playlist> gPlaylists;
+int gN;
 
 int main()
 {  
@@ -20,7 +21,8 @@ int main()
     clear_screen();
     char choice;
 
-    // gPlaylists = readPlaylists();
+    gPlaylists = readPlaylists();
+    gN = gPlaylists.size();
 
     do
     {

@@ -3,16 +3,17 @@
 
 #include <stdlib.h>
 #include <iostream>
-// #include <list>
-// #include "../data/Playlist.h"
+#include <list>
+#include "../data/Playlist.h"
+#include "../data/Song.h"
 
 using namespace::std;
 
 extern void (*current_menu)();
 extern void (*current_handler)(char);
 
-// extern list<Playlist> gPlaylists;
-// extern int gN;
+extern list<Playlist> gPlaylists;
+extern int gN;
 
 void clear_screen();
 char getUserChoice();

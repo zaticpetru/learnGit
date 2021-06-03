@@ -10,7 +10,7 @@
 list<Playlist> readPlaylists();
 list<Song> readPlaylistSongs(string playlistName);
 
-// extern list<Playlist> gPlaylists;
-// extern int gN;
+extern list<Playlist> gPlaylists;
+extern int gN;
 
 #endif
