@@ -6,9 +6,9 @@ int N = 0;
 
 list<Playlist> readPlaylists() {
     list<Playlist> playlists;
-    string fileName = "db/" + playlistsFileName;
+    string path = "db/" + playlistsFileName;
 
-    ifstream playlist(fileName);
+    ifstream playlist(path);
     string input;
     string buffer[256];
     int count = 0;
@@ -17,16 +17,17 @@ list<Playlist> readPlaylists() {
         buffer[count] = input;
         count++;
     }
+    playlist.close();
 
     if(count <= 1) {
-        cout << "nu sunt date in fisier: " << fileName;
+        cout << "nu sunt date in fisier: " << path;
     } else {
         N = atoi(buffer[0].c_str());
         for(int i = 1; i < count; i += 2) {
             Playlist *playlist = new Playlist();
             playlist->set_name(buffer[i]);
             playlist->set_rating(atof(buffer[i + 1].c_str()));
-            playlists.push_front(*playlist);
+            playlists.push_back(*playlist);
         }
 
         for(auto &it : playlists) {
@@ -42,9 +43,9 @@ list<Playlist> readPlaylists() {
 
 list<Song> readPlaylistSongs(string playlistName) {
     list<Song> songs;
-    string fileName = "db/" + playlistName + ".txt";
+    string path = "db/" + playlistName + ".txt";
 
-    ifstream songInput(fileName);
+    ifstream songInput(path);
     string input;
     string buffer[256];
     int count = 0;
@@ -53,7 +54,7 @@ list<Song> readPlaylistSongs(string playlistName) {
         count++;
     }
     if(count <= 1) {
-        cout << "nu sunt date in fisier: " << fileName;
+        cout << "nu sunt date in fisier: " << path;
     } else {
         int n = atoi(buffer[0].c_str());
         for(int i = 1; i < count; i += 3) {
@@ -72,24 +73,25 @@ list<Song> readPlaylistSongs(string playlistName) {
 
 void savePlaylists(list<Playlist> playlists) {
     if(playlists.size() > 0) {
-        string fileName = "db/" + playlistsFileName;
-        ofstream playlistOut(fileName);
+        string path = "db/" + playlistsFileName;
+        ofstream playlistOut(path);
 
         playlistOut << playlists.size() << "\n";
 
         for(auto &it : playlists) {
-            string filename = it.get_name();
-            list<Song> songs = it.get_songs();
+            // string filename = it.get_name();
+            // list<Song> songs = it.get_songs();
 
-            for(auto &it : songs) {
-                cout << it.get_name() << "\n"
-                << it.get_genre() << "\n"
-                << it.get_secDuration() << "\n";
-            }
+            // for(auto &it : songs) {
+            //     cout << it.get_name() << "\n"
+            //     << it.get_genre() << "\n"
+            //     << it.get_secDuration() << "\n";
+            // }
 
-            savePlaylistSongs(filename, songs);
+            // savePlaylistSongs(filename, songs);
 
-            playlistOut << it.get_name() << "\n" << it.get_rating() << "\n";
+            playlistOut << it.get_name() << "\n"
+                << it.get_rating() << "\n";
         }
 
         playlistOut.close();
@@ -97,14 +99,14 @@ void savePlaylists(list<Playlist> playlists) {
 }
 
 void savePlaylistSongs(string playlistName, const list<Song> songs){
-    cout << "\nENTERED SAVING SONGS\n";
-    cout << "\n SONGS SIZE" << songs.size() << "\n";
-    cout << "\n PlaylistName" << playlistName << "\n";
+    // cout << "\nENTERED SAVING SONGS\n";
+    // cout << "\n SONGS SIZE" << songs.size() << "\n";
+    // cout << "\n PlaylistName" << playlistName << "\n";
     
     if(songs.size() > 0) {
-        string fileName = "db/" + playlistName + ".txt";
+        string path = "db/" + playlistName + ".txt";
         ofstream songOut;
-        songOut.open(fileName, ios::out);
+        songOut.open(path, ios::out);
 
         songOut << songs.size() << "\n";
         for(auto &it : songs) {
