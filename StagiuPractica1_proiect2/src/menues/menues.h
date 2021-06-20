@@ -18,7 +18,6 @@ extern list<Playlist> gPlaylists;
 extern int gN;
 
 void clear_screen();
-char getUserChoice();
 
 void print_default(void (*print_menu)());
 void handle_default(void (*handle_menu)(char), char choice);

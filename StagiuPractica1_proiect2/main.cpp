@@ -44,7 +44,7 @@ int main()
     do
     {
         print_default(current_menu);
-        choice = getUserChoice();
+        cin >> choice;
         clear_screen();
 
 

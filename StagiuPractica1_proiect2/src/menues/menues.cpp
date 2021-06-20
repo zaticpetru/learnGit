@@ -5,15 +5,6 @@ void clear_screen()
     system("@cls||clear");
 }
 
-char getUserChoice()
-{
-    char choice;
-    cin >> choice;
-    cin.ignore();
-    return choice;
-}
-
-
 /**
  *? function for displaying a menu with default header & footer 
  *  @param print_menu - function that will display menu items
@@ -27,7 +18,6 @@ void print_default(void (*print_menu)())
     cout << "[x] Inchide programul\n\n";
     cout << "Alegere [1,2,3 .. x]: ";
 }
-
 
 /**
  *? function for handling user input for current displayed menu 

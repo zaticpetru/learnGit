@@ -1,4 +1,7 @@
 #include "menues.h"
+#include "../utils/input.h"
+
+void create_playlist();
 
 void print_main_menu()
 {
@@ -11,10 +14,34 @@ void handle_main_menu(char choice)
 {
     switch (choice)
     {
-    case '1': {
-        printf("Creaza playlist\n\n");
-        printf("_______________________________\n");
+        case '1': {
+            cout << "Creaza playlist\n\n";
+            cout << "_______________________________\n";
+            create_playlist();
+            break;
+        }
 
+        /**
+         *? Example of navigation
+        *  -- Here we can see that for navigating to
+        *  playlist menu, we just need to change
+        *  current_menu & current_handler to desired one
+        */
+        case '2': {
+            cout << "Afiseaza playlist-uri\n\n";
+            current_menu = print_playlist_menu;
+            current_handler = handle_playlist_menu;
+            break;
+        }
+
+        default: {
+            printf("caracter gresit, mai incearca\n\n");
+            break;
+        }
+    }
+}
+
+void create_playlist() {
         Playlist* newPlaylist = new Playlist();
 
         string name;
@@ -22,16 +49,16 @@ void handle_main_menu(char choice)
         int songNumber;
 
         cout << "Playlist name: ";
-        getline(cin, name);
+        name = getUserInput();
         newPlaylist->set_name(name);
 
         cout << "Playlist rating (0-5): ";
-        cin >> rating;
+        rating = getUserInput<float>();
         newPlaylist->set_rating(rating);
 
         cout << "Number of songs in playlist: ";
-        cin >> songNumber;
-
+        songNumber = getUserInput<int>();
+        
         for(int i = 0; i < songNumber; i++){
             cout << "Introduce [" << i << "] song\n";
             string name;
@@ -40,42 +67,23 @@ void handle_main_menu(char choice)
             Song* newSong = new Song();
 
             cout << "\t[" << i << "] name: ";
-            cin.ignore();
-            getline(cin, name);
+            name = getUserInput();
             newSong->set_name(name);
 
             cout << "\t[" << i << "] genre: ";
-            // cin.ignore(); was erasing first letter of genre
-            getline(cin, genre);
+            genre = getUserInput();
             newSong->set_genre(genre);
 
             cout << "\t[" << i << "] seconds duration: ";
-            cin >> secDuration;
+            secDuration = getUserInput<int>();
             newSong->set_secDuration(secDuration);
 
             newPlaylist->AddSong(*newSong);
         }
         
-
         gPlaylists.push_front(*newPlaylist);
 
         savePlaylists(gPlaylists);
         savePlaylistSongs(newPlaylist->get_name(), newPlaylist->get_songs());
         gPlaylists = readPlaylists();
-
-        break;
-    }
-
-    case '2': {
-        cout << "Afiseaza playlist-uri\n\n";
-        current_menu = print_playlist_menu;
-        current_handler = handle_playlist_menu;
-        break;
-
-    }
-
-    default:
-        printf("caracter gresit, mai incearca\n\n");
-        break;
-    }
 }
