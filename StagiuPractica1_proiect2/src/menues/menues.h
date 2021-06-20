@@ -23,6 +23,11 @@ char getUserChoice();
 void print_default(void (*print_menu)());
 void handle_default(void (*handle_menu)(char), char choice);
 
+/**
+ *? list of currently aviable menus 
+ *? In pair with a handler
+ */
+
 void print_main_menu();
 void handle_main_menu(char choice);
 
