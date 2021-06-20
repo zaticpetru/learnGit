@@ -45,7 +45,7 @@ void handle_main_menu(char choice)
             newSong->set_name(name);
 
             cout << "\t[" << i << "] genre: ";
-            cin.ignore();
+            // cin.ignore(); was erasing first letter of genre
             getline(cin, genre);
             newSong->set_genre(genre);
 

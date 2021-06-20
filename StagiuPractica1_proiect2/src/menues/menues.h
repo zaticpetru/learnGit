@@ -2,6 +2,7 @@
 #define MENUES_HEADER
 
 #include <stdlib.h>
+#include <string>
 #include <iostream>
 #include <list>
 #include "../data/Playlist.h"
