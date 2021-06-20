@@ -1,15 +1,17 @@
 # Sistem gestionare playlist
-1) Aplicația permite utilizatorului
-    crearea /
-    vizualizarea /
-    ștergerea playlisturilor.
-   - [ ] done
+1) Aplicația permite utilizatorului urmatoarele actiuni cu playlisturile
+    - crearea
+    - [X] done
+    - vizualizarea
+    - [x] done
+    - ștergerea
+    - [ ] done
 2) Un playlist conține
     melodii ce se pot adăuga / șterge din acesta în funcție de preferințele utilizatorului.
     - [ ] done
 3) Fiecărui playlist îi este atribuit un rating de la 0 la 5 (de exemplu 4.87).
-   - [ ] done
+   - [x] done
 4) Când utilizatorul vizualizează playlisturile, acestea sunt ordonate descrescător în funcție de rating.
-   - [ ] done
+   - [x] done
 5) O melodie este definita prin nume, gen si durata.
-   - [ ] done
+   - [x] done
