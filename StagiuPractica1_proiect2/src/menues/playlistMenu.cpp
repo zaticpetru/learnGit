@@ -18,11 +18,24 @@ void handle_playlist_menu(char choice)
     switch (choice)
     {
     case '1': {
-        cout << "Alege playlist:\n\n";
+        cout << "Alege dupa nume:\n\n";
+        string searchString;
 
-        int id;
-        cin >> id;
-    } 
+        getline(cin, searchString);
+        if(searchString.empty()) {
+            getline(cin,searchString);
+        }
+
+        Playlist result = getPlaylistByName(searchString);
+        if(!result.get_name().empty()) {
+            cout << "A fost gasit playlist-ul:\n";
+            cout << result << "\n";
+        } else {
+            cout << "NU AU FOST GASITE PLAYLISTURI\n";
+        }
+
+        break;
+    }
 
     case '2': {
         cout << "Mergi la meniu principal\n\n";

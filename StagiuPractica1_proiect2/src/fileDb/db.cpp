@@ -3,6 +3,9 @@
 string playlistsFileName = "playlist.txt";
 int N = 0;
 
+bool sortPlaylistsByRating(Playlist first, Playlist second) {
+    return first.get_rating() > second.get_rating();
+}
 
 list<Playlist> readPlaylists() {
     list<Playlist> playlists;
@@ -37,7 +40,7 @@ list<Playlist> readPlaylists() {
         }
     }
 
-    
+    playlists.sort(sortPlaylistsByRating);
     return playlists;
 }
 
@@ -118,4 +121,25 @@ void savePlaylistSongs(string playlistName, const list<Song> songs){
         songOut.close();
     }
 
+}
+
+bool checkPlaylistName(Playlist playlist) {
+
+}
+
+Playlist getPlaylistByName(string searchString) {
+    Playlist result;
+    list<Playlist>::iterator it;
+    for(it = gPlaylists.begin(); it != gPlaylists.end(); it++) {
+        size_t found = it->get_name().find(searchString);
+        if(found != string::npos) {
+            break;
+        }
+    }
+
+    if(it != gPlaylists.end()){
+        result =  *it;
+        result.set_songs(it->get_songs());
+    }
+    return result;
 }
