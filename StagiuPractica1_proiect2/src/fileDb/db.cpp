@@ -123,13 +123,10 @@ void savePlaylistSongs(string playlistName, const list<Song> songs){
 
 }
 
-bool checkPlaylistName(Playlist playlist) {
-
-}
-
 Playlist getPlaylistByName(string searchString) {
     Playlist result;
     list<Playlist>::iterator it;
+
     for(it = gPlaylists.begin(); it != gPlaylists.end(); it++) {
         size_t found = it->get_name().find(searchString);
         if(found != string::npos) {

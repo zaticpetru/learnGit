@@ -33,6 +33,8 @@ void handle_playlist_menu(char choice)
         } else {
             cout << "NU AU FOST GASITE PLAYLISTURI\n";
         }
+        cout << "\n\nContinue ? ...";
+        cin >> searchString;
 
         break;
     }

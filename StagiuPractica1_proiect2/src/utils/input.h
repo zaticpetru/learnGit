@@ -67,11 +67,11 @@ getUserInput() {
     }
 
     if(is_same<T, float>::value) {
-        return T(stof(input.c_str()));
+        return T(stof(input));
     }
 
     if(is_same<T, double>::value) {
-        return T(stod(input.c_str()));
+        return T(stod(input));
     }
 }
 
